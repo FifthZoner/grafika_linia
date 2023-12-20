@@ -1,0 +1,60 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.26"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "grafika_linia",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "grafika_linia::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-grafika_linia-Debug-681bd5f9fac566a23b84.json",
+					"name" : "grafika_linia",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/fifthzoner/Documents/Projects/grafika_linia/cmake-build-debug",
+		"source" : "/home/fifthzoner/Documents/Projects/grafika_linia"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 5
+	}
+}
