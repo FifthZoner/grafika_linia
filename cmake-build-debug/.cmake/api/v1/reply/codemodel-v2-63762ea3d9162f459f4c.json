@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "grafika_linia::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-grafika_linia-Debug-681bd5f9fac566a23b84.json",
+					"jsonFile" : "target-grafika_linia-Debug-7dfa55e867f6660d9535.json",
 					"name" : "grafika_linia",
 					"projectIndex" : 0
 				}
@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/home/fifthzoner/Documents/Projects/grafika_linia/cmake-build-debug",
-		"source" : "/home/fifthzoner/Documents/Projects/grafika_linia"
+		"build" : "/home/fifthzoner/Documents/projects/grafika_linia/cmake-build-debug",
+		"source" : "/home/fifthzoner/Documents/projects/grafika_linia"
 	},
 	"version" : 
 	{

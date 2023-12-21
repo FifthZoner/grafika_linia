@@ -1,5 +1,7 @@
-#include "GL/freeglut.h"
-#include "GL/gl.h"
+#include <GL/freeglut.h>
+#include <GL/gl.h>
+#include <valarray>
+#include "conveyor.hpp"
 
 void drawTriangle() {
     glClearColor(0.4, 0.4, 0.4, 0.4);
@@ -7,6 +9,8 @@ void drawTriangle() {
 
     glColor3f(1.0, 1.0, 1.0);
     glOrtho(-1.0, 1.0, -1.0, 1.0, -1.0, 1.0);
+
+
 
     glBegin(GL_TRIANGLES);
     glVertex3f(-0.7, 0.7, 0);
@@ -17,14 +21,33 @@ void drawTriangle() {
     glFlush();
 }
 
+void drawTheLine() {
+    glClearColor(1.f, 1.f, 1.f, 1.f);
+    glClear(GL_COLOR_BUFFER_BIT);
+
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    glFrustum(-1.0, 1.0, -1.0, 1.0, -1.0, 1.0);
+    glMatrixMode(GL_MODELVIEW);
+
+    glPushMatrix();
+
+    glTranslated(0, 0, 0);
+
+    conveyor1.draw();
+
+    glPopMatrix();
+    glFlush();
+}
+
 int main(int argc, char **argv)
 {
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_SINGLE);
-    glutInitWindowSize(500, 500);
+    glutInitWindowSize(1280, 720);
     glutInitWindowPosition(100, 100);
-    glutCreateWindow("OpenGL - Creating a triangle");
-    glutDisplayFunc(drawTriangle);
+    glutCreateWindow("Linia produkcyjna");
+    glutDisplayFunc(drawTheLine);
     glutMainLoop();
     return 0;
 }
