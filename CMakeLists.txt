@@ -7,5 +7,7 @@ add_executable(grafika_linia main.cpp
         conveyor.hpp
         vector.hpp
         vector.tpp
-        conveyor.cpp)
+        conveyor.cpp
+        controls.hpp
+        controls.cpp)
 target_link_libraries(grafika_linia glut GL)

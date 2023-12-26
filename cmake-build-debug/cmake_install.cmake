@@ -1,4 +1,4 @@
-# Install script for directory: /home/fifthzoner/Documents/projects/grafika_linia
+# Install script for directory: /home/fifthzoner/Documents/Projects/grafika_linia
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/fifthzoner/Documents/projects/grafika_linia/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/fifthzoner/Documents/Projects/grafika_linia/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

@@ -55,6 +55,18 @@ build CMakeFiles/grafika_linia.dir/main.cpp.o: CXX_COMPILER__grafika_linia_unsca
   OBJECT_DIR = CMakeFiles/grafika_linia.dir
   OBJECT_FILE_DIR = CMakeFiles/grafika_linia.dir
 
+build CMakeFiles/grafika_linia.dir/conveyor.cpp.o: CXX_COMPILER__grafika_linia_unscanned_Debug /home/fifthzoner/Documents/Projects/grafika_linia/conveyor.cpp || cmake_object_order_depends_target_grafika_linia
+  DEP_FILE = CMakeFiles/grafika_linia.dir/conveyor.cpp.o.d
+  FLAGS = -g -std=gnu++23 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/grafika_linia.dir
+  OBJECT_FILE_DIR = CMakeFiles/grafika_linia.dir
+
+build CMakeFiles/grafika_linia.dir/controls.cpp.o: CXX_COMPILER__grafika_linia_unscanned_Debug /home/fifthzoner/Documents/Projects/grafika_linia/controls.cpp || cmake_object_order_depends_target_grafika_linia
+  DEP_FILE = CMakeFiles/grafika_linia.dir/controls.cpp.o.d
+  FLAGS = -g -std=gnu++23 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/grafika_linia.dir
+  OBJECT_FILE_DIR = CMakeFiles/grafika_linia.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target grafika_linia
@@ -63,7 +75,7 @@ build CMakeFiles/grafika_linia.dir/main.cpp.o: CXX_COMPILER__grafika_linia_unsca
 #############################################
 # Link the executable grafika_linia
 
-build grafika_linia: CXX_EXECUTABLE_LINKER__grafika_linia_Debug CMakeFiles/grafika_linia.dir/main.cpp.o
+build grafika_linia: CXX_EXECUTABLE_LINKER__grafika_linia_Debug CMakeFiles/grafika_linia.dir/main.cpp.o CMakeFiles/grafika_linia.dir/conveyor.cpp.o CMakeFiles/grafika_linia.dir/controls.cpp.o
   FLAGS = -g
   LINK_LIBRARIES = -lglut  -lGL
   OBJECT_DIR = CMakeFiles/grafika_linia.dir

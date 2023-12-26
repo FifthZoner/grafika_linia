@@ -1,1 +1,0 @@
-/usr/bin/c++ -g CMakeFiles/grafika_linia.dir/main.cpp.o CMakeFiles/grafika_linia.dir/conveyor.cpp.o -o grafika_linia  -lglut -lGL 
