@@ -7,10 +7,10 @@
 int currentX = 0;
 int currentY = 0;
 bool firstMove = true;
-#define MOUSE_DEGREE_VALUE 5.f
+#define MOUSE_DEGREE_VALUE 2.f
 
 void HandleKeyPress(unsigned char key, int x, int y) {
-    std::cout << key << " " << x << " " << y << "\n";
+    //std::cout << key << " " << x << " " << y << "\n";
 }
 
 void HandleMouseMove(int x, int y) {
@@ -20,7 +20,7 @@ void HandleMouseMove(int x, int y) {
         currentY = y;
         return;
     }
-    std::cout << x << " " << y << "\n";
+    //std::cout << x << " " << y << "\n";
     rotationX += float(y - currentY) / MOUSE_DEGREE_VALUE;
     rotationY += float(x - currentX) / MOUSE_DEGREE_VALUE;
     currentX = x;
@@ -39,6 +39,6 @@ void HandleMouseMove(int x, int y) {
         rotationY += 360.f;
     }
 
-    std::cout << rotationX << "\n";
+    //std::cout << rotationX << "\n";
 
 }
