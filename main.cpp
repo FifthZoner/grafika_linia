@@ -12,8 +12,6 @@ void drawTriangle() {
     glColor3f(1.0, 1.0, 1.0);
     glOrtho(-1.0, 1.0, -1.0, 1.0, -1.0, 1.0);
 
-
-
     glBegin(GL_TRIANGLES);
     glVertex3f(-0.7, 0.7, 0);
     glVertex3f(0.7, 0.7, 0);
@@ -25,18 +23,23 @@ void drawTriangle() {
 
 void drawTheLine() {
     glClearColor(1.f, 1.f, 1.f, 1.f);
-    glPolygonMode(GL_BACK,GL_LINE);
-    glEnable(GL_DEPTH_TEST);
-    glDepthFunc(GL_LESS);
-    glEnable(GL_CULL_FACE);
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    glMatrixMode(GL_MODELVIEW);
+
     glLoadIdentity();
+    glMatrixMode(GL_PROJECTION_MATRIX);
+    glPolygonMode(GL_BACK,GL_LINE);
+    glEnable(GL_DEPTH_TEST);
+    glFrontFace(GL_CCW);
+    glDepthFunc(GL_NEVER);
+    glEnable(GL_CULL_FACE);
+
     glTranslated(0, 0, 0);
     glRotatef(rotationX, 1, 0, 0);
     glRotatef(rotationY, 0, 1, 0);
     glOrtho(-1.0, 1.0, -1.0, 1.0, -1.0, 1.0);
+
+    //gluLookAt(0.0, 0.0, 5.0, 0.0, 0.0, -0.1, 0.0, 1.0, 0.0);
 
     glPushMatrix();
 
@@ -82,7 +85,7 @@ int main(int argc, char **argv)
     glEnable(GL_COLOR_MATERIAL);
     glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
     glMaterialfv(GL_FRONT, GL_SPECULAR,specref);
-    glMateriali(GL_FRONT,GL_SHININESS,128);
+    glMateriali(GL_FRONT,GL_SHININESS,96);
 
     glutMainLoop();
     return 0;
