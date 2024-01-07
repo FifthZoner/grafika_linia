@@ -8,6 +8,9 @@ inline float positionX = 0;
 inline float positionY = 0;
 inline float positionZ = 0;
 
+#define RES_X 1280
+#define RES_Y 720
+
 void HandleKeyPress(unsigned char key, int x, int y);
 
 void HandleMouseMove(int x, int y);

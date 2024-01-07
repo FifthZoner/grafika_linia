@@ -3,6 +3,7 @@
 #include "controls.hpp"
 
 #include <iostream>
+#include <GL/freeglut.h>
 
 int currentX = 0;
 int currentY = 0;
@@ -10,21 +11,34 @@ bool firstMove = true;
 #define MOUSE_DEGREE_VALUE 2.f
 
 void HandleKeyPress(unsigned char key, int x, int y) {
-    //std::cout << key << " " << x << " " << y << "\n";
+    switch (key) {
+        case 'a':
+
+            break;
+        case 'w':
+
+            break;
+        case 's':
+
+            break;
+        case 'd':
+
+            break;
+    }
 }
 
 void HandleMouseMove(int x, int y) {
     if (firstMove) {
         firstMove = false;
+
         currentX = x;
         currentY = y;
         return;
     }
-    //std::cout << x << " " << y << "\n";
-    rotationX += float(y - currentY) / MOUSE_DEGREE_VALUE;
-    rotationY += float(x - currentX) / MOUSE_DEGREE_VALUE;
-    currentX = x;
-    currentY = y;
+
+    rotationX += float(y - RES_Y / 2) / MOUSE_DEGREE_VALUE;
+    rotationY += float(x - RES_X / 2) / MOUSE_DEGREE_VALUE;
+    glutWarpPointer(RES_X / 2, RES_Y / 2);
 
     while (rotationX > 360.f) {
         rotationX -= 360.f;
