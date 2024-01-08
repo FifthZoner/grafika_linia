@@ -3,17 +3,21 @@
 
 #include "vector.hpp"
 
+#define LINK_HEIGHT 0.1
+
+
 struct Conveyor {
     // only one value should not be 0
-    Vector2<float> speed = {0, 0};
-    Vector2<float> conveyorSize = {0, 0};
-    float height = 0;
-    float position = 0;
+    float size = 0.f;
+    float speed = 0.f;
+    float position = 0.f;
 
-    Conveyor(Vector2<float> speed, Vector2<float> conveyorSize, float height);
+    Conveyor(float size, float speed);
     void draw();
+    void drawLink();
 };
 
-inline Conveyor conveyor1({10, 0}, {100, 50}, 10);
+inline Conveyor conveyor1(3, 0.005);
+inline Conveyor conveyor2(4, 0.01);
 
 #endif //GRAFIKA_LINIA_LINE_HPP

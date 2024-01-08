@@ -3,258 +3,63 @@
 #include "conveyor.hpp"
 #include "normals.hpp"
 
-Conveyor::Conveyor(Vector2<float> speed, Vector2<float> conveyorSize, float height)
-: speed(speed), conveyorSize(conveyorSize), height(height){
-    if (this->speed.x != 0 and this->speed.y != 0) {
-        if (this->speed.x > this->speed.y){
-            this->speed.y = 0;
-        }
-        else {
-            this->speed.x = 0;
-        }
-    }
-}
-
-#define LINK_HEIGHT 0.1
-
-inline void drawLink() {
-
-    float out[3];
-    float coords[3][3] = {
-            {0.00, 0.20, LINK_HEIGHT},
-            {-0.10, 0.10, LINK_HEIGHT},
-            {-0.10, 0.10, 0.00}
-    };
-
-    // near the arrow
-    glColor3f(0.5, 0.5, 0.5);
-    glBegin(GL_QUADS);
-    glNormal3d(0.707107, 0.707107, 0);
-    glVertex3d(-0.00, 0.20, 0.00);
-    glVertex3d( 0.10, 0.10, 0.00);
-    glVertex3d( 0.10, 0.10, LINK_HEIGHT);
-    glVertex3d(-0.00, 0.20, LINK_HEIGHT);
-
-    glNormal3d(-0.707107, 0.707107, 0);
-    glVertex3d( 0.00, 0.20, LINK_HEIGHT);
-    glVertex3d(-0.10, 0.10, LINK_HEIGHT);
-    glVertex3d(-0.10, 0.10, 0.00);
-    glVertex3d( 0.00, 0.20, 0.00);
-
-    // top sides
-    glNormal3d(-1, 0, 0);
-    glVertex3d(-0.10, 0.00, 0.00);
-    glVertex3d(-0.10, 0.10, 0.00);
-    glVertex3d(-0.10, 0.10, LINK_HEIGHT);
-    glVertex3d(-0.10, 0.00, LINK_HEIGHT);
-
-    glNormal3d(1, 0, 0);
-    glVertex3d( 0.10, 0.00, LINK_HEIGHT);
-    glVertex3d( 0.10, 0.10, LINK_HEIGHT);
-    glVertex3d( 0.10, 0.10, 0.00);
-    glVertex3d( 0.10, 0.00, 0.00);
-
-    glNormal3d(0, 1, 0);
-    glVertex3d(-0.10, 0.00, LINK_HEIGHT);
-    glVertex3d(-0.18, 0.00, LINK_HEIGHT);
-    glVertex3d(-0.18, 0.00, 0.00);
-    glVertex3d(-0.10, 0.00, 0.00);
-
-    glVertex3d( 0.10, 0.00, 0.00);
-    glVertex3d( 0.18, 0.00, 0.00);
-    glVertex3d( 0.18, 0.00, LINK_HEIGHT);
-    glVertex3d( 0.10, 0.00, LINK_HEIGHT);
-
-    // small slopes
-    glNormal3d(1.f / std::sqrt(2), 1.f / std::sqrt(2), 0);
-    glVertex3d( 0.18, 0.00, 0.00);
-    glVertex3d( 0.20,-0.02, 0.00);
-    glVertex3d( 0.20,-0.02, LINK_HEIGHT);
-    glVertex3d( 0.18, 0.00, LINK_HEIGHT);
-
-    glNormal3d(-1.f / std::sqrt(2), 1.f / std::sqrt(2), 0);
-    glVertex3d(-0.18, 0.00, LINK_HEIGHT);
-    glVertex3d(-0.20,-0.02, LINK_HEIGHT);
-    glVertex3d(-0.20,-0.02, 0.00);
-    glVertex3d(-0.18, 0.00, 0.00);
-
-    glNormal3d(-1, 0, 0);
-    glVertex3d(-0.20,-0.02, LINK_HEIGHT);
-    glVertex3d(-0.20,-0.20, LINK_HEIGHT);
-    glVertex3d(-0.20,-0.20, 0.00);
-    glVertex3d(-0.20,-0.02, 0.00);
-
-    glNormal3d(1, 0, 0);
-    glVertex3d( 0.20,-0.02, 0.00);
-    glVertex3d( 0.20,-0.20, 0.00);
-    glVertex3d( 0.20,-0.20, LINK_HEIGHT);
-    glVertex3d( 0.20,-0.02, LINK_HEIGHT);
-
-    glNormal3d(0, -1, 0);
-    glVertex3d(-0.20,-0.20, LINK_HEIGHT);
-    glVertex3d(-0.10,-0.20, LINK_HEIGHT);
-    glVertex3d(-0.10,-0.20, 0.00);
-    glVertex3d(-0.20,-0.20, 0.00);
-
-    glVertex3d( 0.20,-0.20, 0.00);
-    glVertex3d( 0.10,-0.20, 0.00);
-    glVertex3d( 0.10,-0.20, LINK_HEIGHT);
-    glVertex3d( 0.20,-0.20, LINK_HEIGHT);
-
-    glNormal3d(1, 0, 0);
-    glVertex3d(-0.10,-0.10, 0.00);
-    glVertex3d(-0.10,-0.20, 0.00);
-    glVertex3d(-0.10,-0.20, LINK_HEIGHT);
-    glVertex3d(-0.10,-0.10, LINK_HEIGHT);
-
-    glNormal3d(-1, 0, 0);
-    glVertex3d( 0.10,-0.10, LINK_HEIGHT);
-    glVertex3d( 0.10,-0.20, LINK_HEIGHT);
-    glVertex3d( 0.10,-0.20, 0.00);
-    glVertex3d( 0.10,-0.10, 0.00);
-
-    // other belt hole slopes
-    glNormal3d(0.707107, -0.707107, 0);
-    glVertex3d(-0.00, 0.00, LINK_HEIGHT);
-    glVertex3d( 0.10,-0.10, LINK_HEIGHT);
-    glVertex3d( 0.10,-0.10, 0.00);
-    glVertex3d(-0.00, 0.00, 0.00);
-
-    glNormal3d(-0.707107, -0.707107, 0);
-    glVertex3d( 0.00, 0.00, 0.00);
-    glVertex3d(-0.10,-0.10, 0.00);
-    glVertex3d(-0.10,-0.10, LINK_HEIGHT);
-    glVertex3d( 0.00, 0.00, LINK_HEIGHT);
-
-    glEnd();
-
-    // link top
-    glBegin(GL_TRIANGLES);
-    glNormal3d(0, 0, -1);
-
-    glVertex3d(-0.10, 0.10, 0.00);
-    glVertex3d(-0.10,-0.10, 0.00);
-    glVertex3d( 0.00, 0.00, 0.00);
-
-    glVertex3d( 0.00, 0.12, 0.00);
-    glVertex3d(-0.10, 0.10, 0.00);
-    glVertex3d( 0.00, 0.00, 0.00);
-
-    glVertex3d( 0.10, 0.10, 0.00);
-    glVertex3d( 0.00, 0.12, 0.00);
-    glVertex3d( 0.00, 0.00, 0.00);
-
-    glVertex3d( 0.00, 0.00, 0.00);
-    glVertex3d( 0.10,-0.10, 0.00);
-    glVertex3d( 0.10, 0.10, 0.00);
-
-    // left side
-    glVertex3d(-0.10, 0.00, 0.00);
-    glVertex3d(-0.18, 0.00, 0.00);
-    glVertex3d(-0.10,-0.10, 0.00);
-
-    glVertex3d(-0.18, 0.00, 0.00);
-    glVertex3d(-0.20,-0.02, 0.00);
-    glVertex3d(-0.10,-0.10, 0.00);
-
-    glVertex3d(-0.20,-0.20, 0.00);
-    glVertex3d(-0.10,-0.10, 0.00);
-    glVertex3d(-0.20,-0.02, 0.00);
-
-    glVertex3d(-0.20,-0.20, 0.00);
-    glVertex3d(-0.10,-0.20, 0.00);
-    glVertex3d(-0.10,-0.10, 0.00);
-
-    // right side
-    glVertex3d( 0.10,-0.10, 0.00);
-    glVertex3d( 0.18, 0.00, 0.00);
-    glVertex3d( 0.10, 0.00, 0.00);
-
-    glVertex3d( 0.10,-0.10, 0.00);
-    glVertex3d( 0.20,-0.02, 0.00);
-    glVertex3d( 0.18, 0.00, 0.00);
-
-    glVertex3d( 0.20,-0.02, 0.00);
-    glVertex3d( 0.10,-0.10, 0.00);
-    glVertex3d( 0.20,-0.20, 0.00);
-
-    glVertex3d( 0.10,-0.10, 0.00);
-    glVertex3d( 0.10,-0.20, 0.00);
-    glVertex3d( 0.20,-0.20, 0.00);
-
-    // lower surface
-    glNormal3d(0, 0, 1);
-    glVertex3d( 0.00, 0.00, LINK_HEIGHT);
-    glVertex3d(-0.10,-0.10, LINK_HEIGHT);
-    glVertex3d(-0.10, 0.10, LINK_HEIGHT);
-
-    glVertex3d( 0.00, 0.00, LINK_HEIGHT);
-    glVertex3d(-0.10, 0.10, LINK_HEIGHT);
-    glVertex3d( 0.00, 0.12, LINK_HEIGHT);
-
-    glVertex3d( 0.00, 0.00, LINK_HEIGHT);
-    glVertex3d( 0.00, 0.12, LINK_HEIGHT);
-    glVertex3d( 0.10, 0.10, LINK_HEIGHT);
-
-    glVertex3d( 0.10, 0.10, LINK_HEIGHT);
-    glVertex3d( 0.10,-0.10, LINK_HEIGHT);
-    glVertex3d( 0.00, 0.00, LINK_HEIGHT);
-
-    // left side
-    glVertex3d(-0.10,-0.10, LINK_HEIGHT);
-    glVertex3d(-0.18, 0.00, LINK_HEIGHT);
-    glVertex3d(-0.10, 0.00, LINK_HEIGHT);
-
-    glVertex3d(-0.10,-0.10, LINK_HEIGHT);
-    glVertex3d(-0.20,-0.02, LINK_HEIGHT);
-    glVertex3d(-0.18, 0.00, LINK_HEIGHT);
-
-    glVertex3d(-0.20,-0.02, LINK_HEIGHT);
-    glVertex3d(-0.10,-0.10, LINK_HEIGHT);
-    glVertex3d(-0.20,-0.20, LINK_HEIGHT);
-
-    glVertex3d(-0.10,-0.10, LINK_HEIGHT);
-    glVertex3d(-0.10,-0.20, LINK_HEIGHT);
-    glVertex3d(-0.20,-0.20, LINK_HEIGHT);
-
-    // right side
-    glVertex3d( 0.10, 0.00, LINK_HEIGHT);
-    glVertex3d( 0.18, 0.00, LINK_HEIGHT);
-    glVertex3d( 0.10,-0.10, LINK_HEIGHT);
-
-    glVertex3d( 0.18, 0.00, LINK_HEIGHT);
-    glVertex3d( 0.20,-0.02, LINK_HEIGHT);
-    glVertex3d( 0.10,-0.10, LINK_HEIGHT);
-
-    glVertex3d( 0.20,-0.20, LINK_HEIGHT);
-    glVertex3d( 0.10,-0.10, LINK_HEIGHT);
-    glVertex3d( 0.20,-0.02, LINK_HEIGHT);
-
-    glVertex3d( 0.20,-0.20, LINK_HEIGHT);
-    glVertex3d( 0.10,-0.20, LINK_HEIGHT);
-    glVertex3d( 0.10,-0.10, LINK_HEIGHT);
-
-    glVertex3d(-0.10, 0.10, LINK_HEIGHT);
-    glVertex3d( 0.00, 0.20, LINK_HEIGHT);
-    glVertex3d( 0.00, 0.12, LINK_HEIGHT);
-
-    glVertex3d( 0.00, 0.12, LINK_HEIGHT);
-    glVertex3d( 0.00, 0.20, LINK_HEIGHT);
-    glVertex3d( 0.10, 0.10, LINK_HEIGHT);
-
-    // arrow
-    glColor3f(0.0, 0.0, 0.8);
-    glNormal3d(0, 0, -1);
-    glVertex3d( 0.00, 0.12, 0.00);
-    glVertex3d( 0.00, 0.20, 0.00);
-    glVertex3d(-0.10, 0.10, 0.00);
-
-    glVertex3d( 0.10, 0.10, 0.00);
-    glVertex3d( 0.00, 0.20, 0.00);
-    glVertex3d( 0.00, 0.12, 0.00);
-    glEnd();
-}
+Conveyor::Conveyor(float size, float speed) : speed(speed), size(size) {}
 
 void Conveyor::draw() {
-    drawLink();
+
+    // base
+    glColor3d(0.6f, 0.6f, 0.6f);
+
+    glBegin(GL_QUADS);
+    glNormal3d(1, 0, 0);
+    glVertex3d(-0.3f, -0.3f, LINK_HEIGHT);
+    glVertex3d(0.3f, -0.3f, LINK_HEIGHT);
+    glVertex3d(0.3f, size + 0.3f, LINK_HEIGHT);
+    glVertex3d(-0.3f, size + 0.3f, LINK_HEIGHT);
+
+    glNormal3d(-1, 0, 0);
+    glVertex3d(-0.3f, size + 0.3f, LINK_HEIGHT * 3.f);
+    glVertex3d(0.3f, size + 0.3f, LINK_HEIGHT * 3.f);
+    glVertex3d(0.3f, -0.3f, LINK_HEIGHT * 3.f);
+    glVertex3d(-0.3f, -0.3f, LINK_HEIGHT * 3.f);
+
+    glNormal3d(0, -1, 0);
+    glVertex3d(-0.3f, size + 0.3f, LINK_HEIGHT * 3.f);
+    glVertex3d(0.3f, size + 0.3f, LINK_HEIGHT * 3.f);
+    glVertex3d(0.3f, size + 0.3f, LINK_HEIGHT);
+    glVertex3d(-0.3f, size + 0.3f, LINK_HEIGHT);
+
+    glNormal3d(0, 1, 0);
+    glVertex3d(-0.3f, -0.3f, LINK_HEIGHT * 3.f);
+    glVertex3d(0.3f, -0.3f, LINK_HEIGHT * 3.f);
+    glVertex3d(0.3f, -0.3f, LINK_HEIGHT);
+    glVertex3d(-0.3f, -0.3f, LINK_HEIGHT);
+
+    glNormal3d(0, 0, -1);
+    glVertex3d(0.3f, size + 0.3f, LINK_HEIGHT * 3.f);
+    glVertex3d(0.3f, size + 0.3f, LINK_HEIGHT);
+    glVertex3d(0.3f, -0.3f, LINK_HEIGHT);
+    glVertex3d(0.3f, -0.3f, LINK_HEIGHT * 3.f);
+
+    glNormal3d(0, 0, 1);
+    glVertex3d(-0.3f, size + 0.3f, LINK_HEIGHT * 3.f);
+    glVertex3d(-0.3f, size + 0.3f, LINK_HEIGHT);
+    glVertex3d(-0.3f, -0.3f, LINK_HEIGHT);
+    glVertex3d(-0.3f, -0.3f, LINK_HEIGHT * 3.f);
+
+
+    glEnd();
+
+    // links
+    for (int n = 0; n < size / 0.25f; n++) {
+        glPushMatrix();
+        glTranslated(0, float(n) * 0.25f + position, 0);
+        drawLink();
+        glPopMatrix();
+    }
+    position += speed;
+    while (position > 0.25f) {
+        position -= 0.25f;
+    }
+
 }

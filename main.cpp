@@ -5,27 +5,11 @@
 #include "conveyor.hpp"
 #include "controls.hpp"
 
-void drawTriangle() {
-    glClearColor(0.4, 0.4, 0.4, 0.4);
-    glClear(GL_COLOR_BUFFER_BIT);
-
-    glColor3f(1.0, 1.0, 1.0);
-    glOrtho(-1.0, 1.0, -1.0, 1.0, -1.0, 1.0);
-
-    glBegin(GL_TRIANGLES);
-    glVertex3f(-0.7, 0.7, 0);
-    glVertex3f(0.7, 0.7, 0);
-    glVertex3f(0, -1, 0);
-    glEnd();
-
-    glFlush();
-}
-
-float g_lightPos[4] = { 10, 10, -100, 1 };
+float g_lightPos[4] = { 4, 2, 3, 1 };
 
 void drawTheLine() {
 
-    glViewport(0, 0, 1280, 720);
+    glViewport(0, 0, RES_X, RES_Y);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     gluPerspective(65.0, (float)1280 / 720, 1, 1000);
@@ -41,20 +25,21 @@ void drawTheLine() {
 
     glMatrixMode(GL_MODELVIEW);
     glPushMatrix();
-    //glMatrixMode(GL_PROJECTION_MATRIX);
-    //glPolygonMode(GL_BACK,GL_LINE);
 
-    //glFrontFace(GL_CW);
-    //glDepthFunc(GL_NEVER);
-    //glEnable(GL_CULL_FACE);
 
-    glTranslated(0, 0, 0);
     glRotatef(rotationX, 1, 0, 0);
-    glRotatef(rotationY, 0, 1, 0);
-    glScaled(10, 10, 10);
-    //glOrtho(-1.0, 1.0, -1.0, 1.0, -1.0, 1.0);
+    glRotatef(rotationY, 0, 0, 1);
+    glTranslated(positionX, positionY, positionZ);
 
+    glScaled(10, 10, 10);
+
+    //glPushMatrix();
     conveyor1.draw();
+    //glPopMatrix();
+    glPushMatrix();
+    glTranslated(0.8f, 0, 0);
+    conveyor2.draw();
+    glPopMatrix();
 
     glPopMatrix();
     glutSwapBuffers();
@@ -70,7 +55,7 @@ int main(int argc, char **argv)
 {
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_DEPTH);
-    glutInitWindowSize(1280, 720);
+    glutInitWindowSize(RES_X, RES_Y);
     glutInitWindowPosition(100, 100);
     glutCreateWindow("Linia produkcyjna");
 
@@ -105,7 +90,7 @@ int main(int argc, char **argv)
     glEnable(GL_COLOR_MATERIAL);
     glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
     glMaterialfv(GL_FRONT, GL_SPECULAR,specref);
-    glMateriali(GL_FRONT,GL_SHININESS,96);
+    glMateriali(GL_FRONT,GL_SHININESS,128);
 
     glutMainLoop();
     return 0;

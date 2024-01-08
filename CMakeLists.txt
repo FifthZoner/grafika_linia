@@ -11,5 +11,6 @@ add_executable(grafika_linia main.cpp
         controls.hpp
         controls.cpp
         normals.cpp
-        normals.hpp)
+        normals.hpp
+        conveyorDrawing.cpp)
 target_link_libraries(grafika_linia glut GL GLU)

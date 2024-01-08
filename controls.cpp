@@ -1,33 +1,61 @@
 #include <cmath>
 
 #include "controls.hpp"
-
-#include <iostream>
 #include <GL/freeglut.h>
 
 int currentX = 0;
 int currentY = 0;
 bool firstMove = true;
-#define MOUSE_DEGREE_VALUE 2.f
+#define MOUSE_DEGREE_VALUE 10.f
 
 void HandleKeyPress(unsigned char key, int x, int y) {
+
     switch (key) {
         case 'a':
-
+            positionX -= std::sin(rotationY * 0.017452778f) * 0.1f;
+            positionY += std::cos(rotationY * 0.017452778f) * 0.1f;
             break;
         case 'w':
-
+            positionX -= std::sin(rotationY * 0.017452778f) * 0.1f;
+            positionY -= std::cos(rotationY * 0.017452778f) * 0.1f;
             break;
         case 's':
-
+            positionX += std::sin(rotationY * 0.017452778f) * 0.1f;
+            positionY += std::cos(rotationY * 0.017452778f) * 0.1f;
             break;
         case 'd':
-
+            positionX += std::sin(rotationY * 0.017452778f) * 0.1f;
+            positionY -= std::cos(rotationY * 0.017452778f) * 0.1f;
+            break;
+        case 'c':
+            positionZ -= 0.1f;
+            break;
+        case 'f':
+            positionZ += 0.1f;
             break;
     }
 }
 
 void HandleMouseMove(int x, int y) {
+
+    if (x > (RES_X / 2) + 200 or x < (RES_X / 2) - 200 or y > (RES_Y / 2) + 200 or y < (RES_Y / 2) - 200) {
+        glutWarpPointer(RES_X / 2, RES_Y / 2);
+        currentX = RES_X / 2;
+        currentY = RES_Y / 2;
+        if (x > (RES_X / 2) + 200) {
+            x -= 200;
+        }
+        else if (x < (RES_X / 2) - 200) {
+            x += 200;
+        }
+        if (y > (RES_Y / 2) + 200) {
+            y -= 200;
+        }
+        else if (y < (RES_Y / 2) - 200) {
+            y += 200;
+        }
+    }
+
     if (firstMove) {
         firstMove = false;
 
@@ -36,15 +64,17 @@ void HandleMouseMove(int x, int y) {
         return;
     }
 
-    rotationX += float(y - RES_Y / 2) / MOUSE_DEGREE_VALUE;
-    rotationY += float(x - RES_X / 2) / MOUSE_DEGREE_VALUE;
-    glutWarpPointer(RES_X / 2, RES_Y / 2);
+    rotationX += float(y - currentY) / MOUSE_DEGREE_VALUE;
+    rotationY -= float(x - currentX) / MOUSE_DEGREE_VALUE;
 
-    while (rotationX > 360.f) {
-        rotationX -= 360.f;
+    currentX = x;
+    currentY = y;
+
+    while (rotationX > 135.f) {
+        rotationX = 135.f;
     }
-    while (rotationX < 0.f) {
-        rotationX += 360.f;
+    while (rotationX < 45.f) {
+        rotationX = 45.f;
     }
     while (rotationY > 360.f) {
         rotationY -= 360.f;
