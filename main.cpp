@@ -37,13 +37,13 @@ void drawTheLine() {
     conveyor1.draw();
     //glPopMatrix();
     glPushMatrix();
-    glTranslated(0.8f, 0, 0);
+    glTranslated(2.f, 0, 0);
     conveyor2.draw();
     glPopMatrix();
 
     glPopMatrix();
     glutSwapBuffers();
-    //glFlush();
+    glFlush();
 }
 
 void frameTimer(int value) {
@@ -62,9 +62,6 @@ int main(int argc, char **argv)
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LESS);
     glShadeModel(GL_SMOOTH);
-    //glEnable(GL_LIGHTING);
-    //(GL_LIGHT0);
-    //glEnable(GL_CULL_FACE);
 
 
     glutDisplayFunc(drawTheLine);
@@ -79,8 +76,6 @@ int main(int argc, char **argv)
     GLfloat  specular[] = { 1.0f, 1.0f, 1.0f, 1.0f};
     GLfloat	 lightPos[] = { 0.0f, 150.0f, 150.0f, 1.0f };
     GLfloat  specref[] =  { 1.0f, 1.0f, 1.0f, 1.0f };
-
-
     glEnable(GL_LIGHTING);
     glLightfv(GL_LIGHT0,GL_AMBIENT,ambientLight);
     glLightfv(GL_LIGHT0,GL_DIFFUSE,diffuseLight);

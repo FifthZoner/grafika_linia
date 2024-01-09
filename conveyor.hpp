@@ -14,7 +14,8 @@ struct Conveyor {
 
     Conveyor(float size, float speed);
     void draw();
-    void drawLink();
+    static void drawLink();
+    void drawHousing() const;
 };
 
 inline Conveyor conveyor1(3, 0.005);
