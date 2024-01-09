@@ -4,6 +4,7 @@
 #include <iostream>
 #include "conveyor.hpp"
 #include "controls.hpp"
+#include "product.hpp"
 
 float g_lightPos[4] = { 4, 2, 3, 1 };
 
@@ -33,13 +34,33 @@ void drawTheLine() {
 
     glScaled(10, 10, 10);
 
-    //glPushMatrix();
     conveyor1.draw();
-    //glPopMatrix();
+
     glPushMatrix();
     glTranslated(2.f, 0, 0);
     conveyor2.draw();
     glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(0.f, 4.f, 0);
+    conveyor3.draw();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(0.f, 1.2f, 0.f);
+    drawDevice();
+    glTranslated(2.f, 2.f, 0.f);
+    drawDevice();
+    glTranslated(-2.f, 2.4f, 0.f);
+    glScaled(1, 2.f, 1);
+    drawDevice();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(0.f, 0.f, -0.5f);
+    drawCubeCooled();
+    glPopMatrix();
+
 
     glPopMatrix();
     glutSwapBuffers();
@@ -86,6 +107,8 @@ int main(int argc, char **argv)
     glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
     glMaterialfv(GL_FRONT, GL_SPECULAR,specref);
     glMateriali(GL_FRONT,GL_SHININESS,128);
+
+    loadThings();
 
     glutMainLoop();
     return 0;

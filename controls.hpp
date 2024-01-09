@@ -1,7 +1,7 @@
 #ifndef GRAFIKA_LINIA_CONTROLS_HPP
 #define GRAFIKA_LINIA_CONTROLS_HPP
 
-inline float rotationX = 0;
+inline float rotationX = 90;
 inline float rotationY = 0;
 inline float rotationZ = 0;
 inline float positionX = 0;

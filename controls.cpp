@@ -12,20 +12,20 @@ void HandleKeyPress(unsigned char key, int x, int y) {
 
     switch (key) {
         case 'a':
-            positionX -= std::sin(rotationY * 0.017452778f) * 0.1f;
-            positionY += std::cos(rotationY * 0.017452778f) * 0.1f;
+            positionX -= std::sin(rotationY * 0.017452778f) * 0.5f;
+            positionY += std::cos(rotationY * 0.017452778f) * 0.5f;
             break;
         case 'w':
-            positionX -= std::sin(rotationY * 0.017452778f) * 0.1f;
-            positionY -= std::cos(rotationY * 0.017452778f) * 0.1f;
+            positionX -= std::sin(rotationY * 0.017452778f) * 0.5f;
+            positionY -= std::cos(rotationY * 0.017452778f) * 0.5f;
             break;
         case 's':
-            positionX += std::sin(rotationY * 0.017452778f) * 0.1f;
-            positionY += std::cos(rotationY * 0.017452778f) * 0.1f;
+            positionX += std::sin(rotationY * 0.017452778f) * 0.5f;
+            positionY += std::cos(rotationY * 0.017452778f) * 0.5f;
             break;
         case 'd':
-            positionX += std::sin(rotationY * 0.017452778f) * 0.1f;
-            positionY -= std::cos(rotationY * 0.017452778f) * 0.1f;
+            positionX += std::sin(rotationY * 0.017452778f) * 0.5f;
+            positionY -= std::cos(rotationY * 0.017452778f) * 0.5f;
             break;
         case 'c':
             positionZ -= 0.1f;
@@ -58,13 +58,12 @@ void HandleMouseMove(int x, int y) {
 
     if (firstMove) {
         firstMove = false;
-
         currentX = x;
         currentY = y;
         return;
     }
 
-    rotationX += float(y - currentY) / MOUSE_DEGREE_VALUE;
+    rotationX -= float(y - currentY) / MOUSE_DEGREE_VALUE;
     rotationY -= float(x - currentX) / MOUSE_DEGREE_VALUE;
 
     currentX = x;

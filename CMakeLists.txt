@@ -12,5 +12,7 @@ add_executable(grafika_linia main.cpp
         controls.cpp
         normals.cpp
         normals.hpp
-        conveyorDrawing.cpp)
+        conveyorDrawing.cpp
+        product.hpp
+        product.cpp)
 target_link_libraries(grafika_linia glut GL GLU)
