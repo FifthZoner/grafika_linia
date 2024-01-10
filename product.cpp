@@ -8,8 +8,31 @@
 #include "product.hpp"
 #include "conveyor.hpp"
 
-GLint textureCold = 0;
-GLint textureHot  = 0;
+void drawFloor() {
+
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, textureTile);
+    glBegin(GL_QUADS);
+    glNormal3d(1, 0, 0);
+    glColor3d(0.5f, 0.5f, 0.5f);
+
+    for (int x = -2; x < 7; x++) {
+        for (int y = -2; y < 21; y++) {
+            glTexCoord2f(0.f, 0.f);
+            glVertex3d(float(x) * 0.5f, float(y) * 0.5f, LINK_HEIGHT * 3.f);
+            glTexCoord2f(0.f, 1.f);
+            glVertex3d(float(x) * 0.5f, float(y + 1) * 0.5f, LINK_HEIGHT * 3.f);
+            glTexCoord2f(1.f, 1.f);
+            glVertex3d(float(x + 1) * 0.5f, float(y + 1) * 0.5f, LINK_HEIGHT * 3.f);
+            glTexCoord2f(1.f, 0.f);
+            glVertex3d(float(x + 1) * 0.5f, float(y) * 0.5f, LINK_HEIGHT * 3.f);
+
+        }
+    }
+
+    glEnd();
+    glDisable(GL_TEXTURE_2D);
+}
 
 void drawDevice() {
     glBegin(GL_QUADS);
@@ -315,7 +338,7 @@ void drawCubeCooled() {
     glDisable(GL_TEXTURE_2D);
 }
 
-GLuint LoadTexture( const char * filename )
+GLuint LoadTexture( const char * filename, int x, int y)
 {
     GLuint texture;
     int width, height;
@@ -325,8 +348,8 @@ GLuint LoadTexture( const char * filename )
     file = fopen( filename, "rb" );
 
     if ( file == nullptr ) return 0;
-    width = 1280;
-    height = 1280;
+    width = x;
+    height = y;
     data = (unsigned char *)malloc( width * height * 3 );
     //int size = fseek(file,);
     fread( data, width * height * 3, 1, file );
@@ -358,7 +381,8 @@ GLuint LoadTexture( const char * filename )
 }
 
 void loadThings() {
-    textureCold = LoadTexture("data/aluminum.bmp");
-    textureHot = LoadTexture("data/aluminumHot.bmp");
-    std::cout << textureCold << " " << textureHot << "\n";
+    textureCold = LoadTexture("data/aluminum.bmp", 1280, 1280);
+    textureHot = LoadTexture("data/aluminumHot.bmp", 1280, 1280);
+    textureTile = LoadTexture("data/floorTile.bmp", 160, 160);
+    std::cout << textureCold << " " << textureHot << " " << textureTile << "\n";
 }

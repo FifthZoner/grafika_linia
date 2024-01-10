@@ -5,6 +5,7 @@
 #include "conveyor.hpp"
 #include "controls.hpp"
 #include "product.hpp"
+#include "arms.hpp"
 
 float g_lightPos[4] = { 4, 2, 3, 1 };
 
@@ -57,9 +58,11 @@ void drawTheLine() {
     glPopMatrix();
 
     glPushMatrix();
-    glTranslated(0.f, 0.f, -0.5f);
-    drawCubeCooled();
+    glTranslated(1.f, 0.f, 0.f);
+    arm1.draw1();
     glPopMatrix();
+
+    drawFloor();
 
 
     glPopMatrix();

@@ -7,6 +7,12 @@
 // cooled
 // thrown on a pile
 
+inline GLuint textureCold = 0;
+inline GLuint textureHot  = 0;
+inline GLuint textureTile  = 0;
+
+void drawFloor();
+
 void drawDevice();
 
 void drawCube();
