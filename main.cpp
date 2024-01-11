@@ -58,7 +58,7 @@ void drawTheLine() {
     glPopMatrix();
 
     glPushMatrix();
-    glTranslated(1.f, 0.f, 0.f);
+    glTranslated(1.f, 0.f, LINK_HEIGHT);
     arm1.draw1();
     glPopMatrix();
 

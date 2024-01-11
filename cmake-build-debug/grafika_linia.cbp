@@ -80,13 +80,40 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/fifthzoner/Documents/projects/grafika_linia/arms.cpp">
+			<Option target="grafika_linia"/>
+		</Unit>
+		<Unit filename="/home/fifthzoner/Documents/projects/grafika_linia/arms.hpp">
+			<Option target="grafika_linia"/>
+		</Unit>
+		<Unit filename="/home/fifthzoner/Documents/projects/grafika_linia/controls.cpp">
+			<Option target="grafika_linia"/>
+		</Unit>
+		<Unit filename="/home/fifthzoner/Documents/projects/grafika_linia/controls.hpp">
+			<Option target="grafika_linia"/>
+		</Unit>
 		<Unit filename="/home/fifthzoner/Documents/projects/grafika_linia/conveyor.cpp">
 			<Option target="grafika_linia"/>
 		</Unit>
 		<Unit filename="/home/fifthzoner/Documents/projects/grafika_linia/conveyor.hpp">
 			<Option target="grafika_linia"/>
 		</Unit>
+		<Unit filename="/home/fifthzoner/Documents/projects/grafika_linia/conveyorDrawing.cpp">
+			<Option target="grafika_linia"/>
+		</Unit>
 		<Unit filename="/home/fifthzoner/Documents/projects/grafika_linia/main.cpp">
+			<Option target="grafika_linia"/>
+		</Unit>
+		<Unit filename="/home/fifthzoner/Documents/projects/grafika_linia/normals.cpp">
+			<Option target="grafika_linia"/>
+		</Unit>
+		<Unit filename="/home/fifthzoner/Documents/projects/grafika_linia/normals.hpp">
+			<Option target="grafika_linia"/>
+		</Unit>
+		<Unit filename="/home/fifthzoner/Documents/projects/grafika_linia/product.cpp">
+			<Option target="grafika_linia"/>
+		</Unit>
+		<Unit filename="/home/fifthzoner/Documents/projects/grafika_linia/product.hpp">
 			<Option target="grafika_linia"/>
 		</Unit>
 		<Unit filename="/home/fifthzoner/Documents/projects/grafika_linia/vector.hpp">

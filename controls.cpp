@@ -12,8 +12,8 @@ void HandleKeyPress(unsigned char key, int x, int y) {
 
     switch (key) {
         case 'a':
-            positionX -= std::sin(rotationY * 0.017452778f) * 0.5f;
-            positionY += std::cos(rotationY * 0.017452778f) * 0.5f;
+            positionX -= std::cos(rotationY * 0.017452778f) * 0.5f;
+            positionY += std::sin(rotationY * 0.017452778f) * 0.5f;
             break;
         case 'w':
             positionX -= std::sin(rotationY * 0.017452778f) * 0.5f;
@@ -24,8 +24,8 @@ void HandleKeyPress(unsigned char key, int x, int y) {
             positionY += std::cos(rotationY * 0.017452778f) * 0.5f;
             break;
         case 'd':
-            positionX += std::sin(rotationY * 0.017452778f) * 0.5f;
-            positionY -= std::cos(rotationY * 0.017452778f) * 0.5f;
+            positionX += std::cos(rotationY * 0.017452778f) * 0.5f;
+            positionY -= std::sin(rotationY * 0.017452778f) * 0.5f;
             break;
         case 'c':
             positionZ -= 0.1f;

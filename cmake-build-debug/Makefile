@@ -129,6 +129,54 @@ grafika_linia/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/grafika_linia.dir/build.make CMakeFiles/grafika_linia.dir/build
 .PHONY : grafika_linia/fast
 
+arms.o: arms.cpp.o
+.PHONY : arms.o
+
+# target to build an object file
+arms.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grafika_linia.dir/build.make CMakeFiles/grafika_linia.dir/arms.cpp.o
+.PHONY : arms.cpp.o
+
+arms.i: arms.cpp.i
+.PHONY : arms.i
+
+# target to preprocess a source file
+arms.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grafika_linia.dir/build.make CMakeFiles/grafika_linia.dir/arms.cpp.i
+.PHONY : arms.cpp.i
+
+arms.s: arms.cpp.s
+.PHONY : arms.s
+
+# target to generate assembly for a file
+arms.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grafika_linia.dir/build.make CMakeFiles/grafika_linia.dir/arms.cpp.s
+.PHONY : arms.cpp.s
+
+controls.o: controls.cpp.o
+.PHONY : controls.o
+
+# target to build an object file
+controls.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grafika_linia.dir/build.make CMakeFiles/grafika_linia.dir/controls.cpp.o
+.PHONY : controls.cpp.o
+
+controls.i: controls.cpp.i
+.PHONY : controls.i
+
+# target to preprocess a source file
+controls.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grafika_linia.dir/build.make CMakeFiles/grafika_linia.dir/controls.cpp.i
+.PHONY : controls.cpp.i
+
+controls.s: controls.cpp.s
+.PHONY : controls.s
+
+# target to generate assembly for a file
+controls.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grafika_linia.dir/build.make CMakeFiles/grafika_linia.dir/controls.cpp.s
+.PHONY : controls.cpp.s
+
 conveyor.o: conveyor.cpp.o
 .PHONY : conveyor.o
 
@@ -152,6 +200,30 @@ conveyor.s: conveyor.cpp.s
 conveyor.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/grafika_linia.dir/build.make CMakeFiles/grafika_linia.dir/conveyor.cpp.s
 .PHONY : conveyor.cpp.s
+
+conveyorDrawing.o: conveyorDrawing.cpp.o
+.PHONY : conveyorDrawing.o
+
+# target to build an object file
+conveyorDrawing.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grafika_linia.dir/build.make CMakeFiles/grafika_linia.dir/conveyorDrawing.cpp.o
+.PHONY : conveyorDrawing.cpp.o
+
+conveyorDrawing.i: conveyorDrawing.cpp.i
+.PHONY : conveyorDrawing.i
+
+# target to preprocess a source file
+conveyorDrawing.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grafika_linia.dir/build.make CMakeFiles/grafika_linia.dir/conveyorDrawing.cpp.i
+.PHONY : conveyorDrawing.cpp.i
+
+conveyorDrawing.s: conveyorDrawing.cpp.s
+.PHONY : conveyorDrawing.s
+
+# target to generate assembly for a file
+conveyorDrawing.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grafika_linia.dir/build.make CMakeFiles/grafika_linia.dir/conveyorDrawing.cpp.s
+.PHONY : conveyorDrawing.cpp.s
 
 main.o: main.cpp.o
 .PHONY : main.o
@@ -177,6 +249,54 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/grafika_linia.dir/build.make CMakeFiles/grafika_linia.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+normals.o: normals.cpp.o
+.PHONY : normals.o
+
+# target to build an object file
+normals.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grafika_linia.dir/build.make CMakeFiles/grafika_linia.dir/normals.cpp.o
+.PHONY : normals.cpp.o
+
+normals.i: normals.cpp.i
+.PHONY : normals.i
+
+# target to preprocess a source file
+normals.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grafika_linia.dir/build.make CMakeFiles/grafika_linia.dir/normals.cpp.i
+.PHONY : normals.cpp.i
+
+normals.s: normals.cpp.s
+.PHONY : normals.s
+
+# target to generate assembly for a file
+normals.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grafika_linia.dir/build.make CMakeFiles/grafika_linia.dir/normals.cpp.s
+.PHONY : normals.cpp.s
+
+product.o: product.cpp.o
+.PHONY : product.o
+
+# target to build an object file
+product.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grafika_linia.dir/build.make CMakeFiles/grafika_linia.dir/product.cpp.o
+.PHONY : product.cpp.o
+
+product.i: product.cpp.i
+.PHONY : product.i
+
+# target to preprocess a source file
+product.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grafika_linia.dir/build.make CMakeFiles/grafika_linia.dir/product.cpp.i
+.PHONY : product.cpp.i
+
+product.s: product.cpp.s
+.PHONY : product.s
+
+# target to generate assembly for a file
+product.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/grafika_linia.dir/build.make CMakeFiles/grafika_linia.dir/product.cpp.s
+.PHONY : product.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -186,12 +306,27 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... grafika_linia"
+	@echo "... arms.o"
+	@echo "... arms.i"
+	@echo "... arms.s"
+	@echo "... controls.o"
+	@echo "... controls.i"
+	@echo "... controls.s"
 	@echo "... conveyor.o"
 	@echo "... conveyor.i"
 	@echo "... conveyor.s"
+	@echo "... conveyorDrawing.o"
+	@echo "... conveyorDrawing.i"
+	@echo "... conveyorDrawing.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... normals.o"
+	@echo "... normals.i"
+	@echo "... normals.s"
+	@echo "... product.o"
+	@echo "... product.i"
+	@echo "... product.s"
 .PHONY : help
 
 
