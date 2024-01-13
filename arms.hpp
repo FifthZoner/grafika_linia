@@ -3,7 +3,7 @@
 
 struct Arm {
     float rotationZ = 0.f;
-    float rotationX1 = 45.f;
+    float rotationX1 = 0.f;
     float rotationX2 = 0.f;
     float rotationX3 = 0.f;
     float rotationY = 0.f;

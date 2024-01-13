@@ -31,6 +31,4 @@ void Normal(float v[3][3], float out[3]) {
     out[0] /= length;
     out[1] /= length;
     out[2] /= length;
-
-    std::cout << out[0] << " " << out[1] << " " << out[2] << "\n";
 }

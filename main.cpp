@@ -6,6 +6,7 @@
 #include "controls.hpp"
 #include "product.hpp"
 #include "arms.hpp"
+#include "animation.hpp"
 
 float g_lightPos[4] = { 4, 2, 3, 1 };
 
@@ -58,16 +59,41 @@ void drawTheLine() {
     glPopMatrix();
 
     glPushMatrix();
-    glTranslated(1.f, 0.f, LINK_HEIGHT);
+    glTranslated(1.f, 0.75f, LINK_HEIGHT);
     arm1.draw1();
     glPopMatrix();
 
     drawFloor();
 
+    // boxes
+    for (unsigned int n = 0; n < positions.size(); n++) {
+        glPushMatrix();
+        glTranslatef(positions[n].x, positions[n].y, positions[n].z);
+        glRotatef(rotations[n].z, 0, 0, 1);
+        glRotatef(rotations[n].y, 0, 1, 0);
+        glRotatef(rotations[n].x, 1, 0, 0);
+        switch (states[n]) {
+            case State::start:
+                drawCube();
+                break;
+            case State::heated:
+                drawCubeHeated();
+                break;
+            case State::brushed:
+                drawCubeBrushed();
+                break;
+            case State::cooled:
+                drawCubeCooled();
+                break;
+        }
+        glPopMatrix();
+    }
 
     glPopMatrix();
     glutSwapBuffers();
     glFlush();
+
+    Animate();
 }
 
 void frameTimer(int value) {

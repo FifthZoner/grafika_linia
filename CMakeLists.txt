@@ -16,5 +16,7 @@ add_executable(grafika_linia main.cpp
         product.hpp
         product.cpp
         arms.hpp
-        arms.cpp)
+        arms.cpp
+        animation.hpp
+        animation.cpp)
 target_link_libraries(grafika_linia glut GL GLU)
