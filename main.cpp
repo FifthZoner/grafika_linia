@@ -36,7 +36,10 @@ void drawTheLine() {
 
     glScaled(10, 10, 10);
 
+    glPushMatrix();
+    glTranslated(0.09f, 0, 0);
     conveyor1.draw();
+    glPopMatrix();
 
     glPushMatrix();
     glTranslated(2.f, 0, 0);
@@ -49,9 +52,9 @@ void drawTheLine() {
     glPopMatrix();
 
     glPushMatrix();
-    glTranslated(0.f, 1.2f, 0.f);
+    glTranslated(0.09f, 1.2f, 0.f);
     drawDevice();
-    glTranslated(2.f, 2.f, 0.f);
+    glTranslated(1.91f, 2.f, 0.f);
     drawDevice();
     glTranslated(-2.f, 2.4f, 0.f);
     glScaled(1, 2.f, 1);
@@ -67,11 +70,11 @@ void drawTheLine() {
 
     // boxes
     for (unsigned int n = 0; n < positions.size(); n++) {
+        if (!display[n]) {
+            continue;
+        }
         glPushMatrix();
         glTranslatef(positions[n].x, positions[n].y, positions[n].z);
-        glRotatef(rotations[n].z, 0, 0, 1);
-        glRotatef(rotations[n].y, 0, 1, 0);
-        glRotatef(rotations[n].x, 1, 0, 0);
         switch (states[n]) {
             case State::start:
                 drawCube();

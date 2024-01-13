@@ -1,6 +1,8 @@
 #ifndef GRAFIKA_LINIA_PRODUCT_HPP
 #define GRAFIKA_LINIA_PRODUCT_HPP
 
+#include <GL/gl.h>
+
 // the cube gets
 // heated
 // brushed like in brushed aluminum

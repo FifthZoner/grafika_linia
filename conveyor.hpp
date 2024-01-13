@@ -18,7 +18,7 @@ struct Conveyor {
     void drawHousing() const;
 };
 
-inline Conveyor conveyor1(3, 0.005);
+inline Conveyor conveyor1(3, 0.01);
 inline Conveyor conveyor2(8, 0.01);
 inline Conveyor conveyor3(5, 0.005);
 

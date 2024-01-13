@@ -1,3 +1,0 @@
-/home/fifthzoner/Documents/projects/grafika_linia/cmake-build-debug/CMakeFiles/grafika_linia.dir
-/home/fifthzoner/Documents/projects/grafika_linia/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/fifthzoner/Documents/projects/grafika_linia/cmake-build-debug/CMakeFiles/rebuild_cache.dir

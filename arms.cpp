@@ -1,5 +1,7 @@
 #include "arms.hpp"
 #include "normals.hpp"
+#include "product.hpp"
+#include "animation.hpp"
 #include <GL/freeglut.h>
 #include <GL/gl.h>
 #include <GL/glext.h>
@@ -146,6 +148,24 @@ void Arm::draw1() {
     glTranslated(0.f, 0.f, -0.1f);
     gluCylinder(quad, 0.05f, 0.075f, 0.1f, 100, 1);
     gluDisk(quad, 0.f, 0.05f, 100, 1);
+
+    if (hasCube) {
+        glTranslated(0.f, 0.f, -0.1f);
+        switch (cubeState) {
+            case State::start:
+                drawCube();
+                break;
+            case State::heated:
+                drawCubeHeated();
+                break;
+            case State::brushed:
+                drawCubeBrushed();
+                break;
+            case State::cooled:
+                drawCubeCooled();
+                break;
+        }
+    }
 
     glPopMatrix();
     glPopMatrix();
