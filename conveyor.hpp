@@ -19,7 +19,7 @@ struct Conveyor {
 };
 
 inline Conveyor conveyor1(3, 0.01);
-inline Conveyor conveyor2(6.4, 0.02);
+inline Conveyor conveyor2(5.75, 0.02);
 inline Conveyor conveyor3(4, 0.005);
 
 #endif //GRAFIKA_LINIA_LINE_HPP

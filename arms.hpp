@@ -15,6 +15,6 @@ struct Arm {
     void draw2();
 };
 
-inline Arm arm1, arm2;
+inline Arm arm1, arm2, arm3, arm4;
 
 #endif //GRAFIKA_LINIA_ARMS_HPP

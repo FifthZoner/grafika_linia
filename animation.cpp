@@ -1,3 +1,4 @@
+#include <iostream>
 #include "animation.hpp"
 #include "arms.hpp"
 
@@ -108,8 +109,22 @@ void Animate() {
 
     }
 
+
     // the hot brushed cube being transferred to cooling machine
     if (timer <= 90) {
+        arm3.rotationZ = -90 + time * 2;
+        arm3.hasCube = true;
+        positions[9] = Vector3f(0.09, 5.9 + (time + 90) * 0.005, -0.1);
+        arm3.cubeState = 2;
+        if (timer <=30) {
+            arm3.rotationX1 = time;
+            arm3.rotationX2 = -time;
+        }
+        else if (timer >= 75) {
+            arm3.rotationX1 = 30.f - (time - 75.f) * 2;
+            arm3.rotationX2 = -30.f + (time - 75.f) * 2;
+        }
+
         if (timer > 55) {
             positions[8] = Vector3f(1.91, 2.3 + time * 0.02, -0.1);
         }
@@ -118,8 +133,24 @@ void Animate() {
         }
     }
     else {
-
+        positions[9] = Vector3f(0.09, 5.9 + (time - 90) * 0.005, -0.1);
+        arm3.hasCube = false;
         positions[8] = Vector3f(1.91, 2.3 + time * 0.02, -0.1);
+
+        if (timer <= 100) {
+            arm3.rotationX1 = (time - 90) * 4.5;
+            arm3.rotationX2 = (time - 90) * -4.5;
+        }
+        else if (timer <= 120){
+            arm3.rotationZ = -120 + time * 2 + (time - 90);
+        }
+        else {
+            arm3.rotationZ = -90 + time * 2;
+            arm3.rotationX1 = 45 - ((time - 120) * 0.75f);
+            arm3.rotationX2 = -45 + ((time - 120) * 0.75f);
+        }
+
+
     }
 
 }

@@ -13,7 +13,7 @@ void Ramie(float r1, float r2, float h, float d) {
     glBegin(GL_TRIANGLE_FAN);
     glNormal3d(0.0, 0.0, -1.0);
     glVertex3d(0.0f, 0.0f, 0.0f);
-    for (double angle = 3.1415f; angle <= (2.f * 3.1415f); angle += (3.1415f / 32.0f))
+    for (double angle = 3.1415f; angle <= (2.f * 3.1415f); angle += (3.1415f / 64.0f))
     {
         double x = r1 * std::sin(angle);
         double y = r1 * std::cos(angle);
@@ -23,7 +23,7 @@ void Ramie(float r1, float r2, float h, float d) {
     glBegin(GL_TRIANGLE_FAN);
     glNormal3d(0.0, 0.0, -1.0);
     glVertex3d(d, 0.0f, 0.0f);
-    for (double angle = 0.f; angle <= (3.1415f); angle += (3.1415f / 32.0f))
+    for (double angle = 0.f; angle <= (3.1415f); angle += (3.1415f / 64.0f))
     {
         double x = r2 * std::sin(angle) + d;
         double y = r2 * std::cos(angle);
@@ -40,7 +40,7 @@ void Ramie(float r1, float r2, float h, float d) {
     glBegin(GL_TRIANGLE_FAN);
     glNormal3d(0.0, 0.0, 1.0);
     glVertex3d(0.0f, 0.0f, h);
-    for (double angle = 0.f; angle >= -(3.1415f); angle -= (3.1415f / 32.0f))
+    for (double angle = 0.f; angle >= -(3.1415f); angle -= (3.1415f / 64.0f))
     {
         double x = r1 * std::sin(angle);
         double y = r1 * std::cos(angle);
@@ -50,7 +50,7 @@ void Ramie(float r1, float r2, float h, float d) {
     glBegin(GL_TRIANGLE_FAN);
     glNormal3d(0.0, 0.0, 1.0);
     glVertex3d(d, 0.0f, h);
-    for (double angle = -3.1415f; angle >= -(2.f * 3.1415f); angle -= (3.1415f / 32.0f))
+    for (double angle = -3.1415f; angle >= -(2.f * 3.1415f); angle -= (3.1415f / 64.0f))
     {
         double x = r2 * std::sin(angle) + d;
         double y = r2 * std::cos(angle);
@@ -65,7 +65,7 @@ void Ramie(float r1, float r2, float h, float d) {
     glEnd();
 
     glBegin(GL_QUAD_STRIP);
-    for (double angle = 3.1415f; angle <= (2.0f * 3.1415f); angle += (3.1415f / 32.0f))
+    for (double angle = 3.1415f; angle <= (2.0f * 3.1415f); angle += (3.1415f / 64.0f))
     {
         double x = r1 * std::sin(angle);
         double y = r1 * std::cos(angle);
@@ -88,7 +88,7 @@ void Ramie(float r1, float r2, float h, float d) {
     glVertex3d(0.f, r1, 0.f);
     glEnd();
     glBegin(GL_QUAD_STRIP);
-    for (double angle = 0.f; angle <= (3.1415f); angle += (3.1415f / 32.0f))
+    for (double angle = 0.f; angle <= (3.1415f); angle += (3.1415f / 64.0f))
     {
         double x = r2 * std::sin(angle) + d;
         double y = r2 * std::cos(angle);
@@ -174,5 +174,46 @@ void Arm::draw1() {
 }
 
 void Arm::draw2() {
+    auto* quad = gluNewQuadric();
+    glPushMatrix();
+    glColor3d(0.3f, 0.3f, 0.7f);
+    glRotated(-180, 1, 0, 0);
+    gluCylinder(quad, 0.15, 0.15, 0.15, 100, 1);
+    glTranslated(0, 0, 0.15);
+    gluDisk(quad, 0, 0.15, 100, 1);
+    glColor3d(0.6f, 0.6f, 0.6f);
+    gluCylinder(quad, 0.1, 0.1, 0.25, 100, 1);
+    glRotated(rotationZ, 0, 0, 1);
+    glTranslated(0, 0, 0.25);
+    glRotated(90, 0, 1, 0);
+    glTranslated(0, 0, -0.2);
+    gluCylinder(quad, 0.1, 0.1, 0.4, 100, 1);
+    gluDisk(quad, 0, 0.1, 100, 1);
+    glTranslated(0, 0, 0.4);
+    glRotated(90 + rotationX1, 0, 0, 1);
+    Ramie(0.1, 0.075, 0.1, 0.6);
+    glTranslated(0.6, 0, -0.1);
+    glRotated(rotationX2, 0, 0, 1);
+    Ramie(0.075, 0.05, 0.1, 0.35);
 
+    if (hasCube) {
+        glTranslated(0.35f, 0.f, -0.1f);
+        switch (cubeState) {
+            case State::start:
+                drawCube();
+                break;
+            case State::heated:
+                drawCubeHeated();
+                break;
+            case State::brushed:
+                drawCubeBrushed();
+                break;
+            case State::cooled:
+                drawCubeCooled();
+                break;
+        }
+    }
+
+    glPopMatrix();
+    gluDeleteQuadric(quad);
 }

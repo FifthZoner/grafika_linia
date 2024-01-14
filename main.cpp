@@ -47,7 +47,7 @@ void drawTheLine() {
     glPopMatrix();
 
     glPushMatrix();
-    glTranslated(0.f, 5.f, 0);
+    glTranslated(0.09f, 5.f, 0);
     conveyor3.draw();
     glPopMatrix();
 
@@ -56,7 +56,7 @@ void drawTheLine() {
     drawDevice();
     glTranslated(1.82f, 1.91f, 0.f);
     drawDevice();
-    glTranslated(-1.91f, 3.6f, 0.f);
+    glTranslated(-1.82f, 3.4f, 0.f);
     glScaled(1, 2.f, 1);
     drawDevice();
     glPopMatrix();
@@ -69,6 +69,8 @@ void drawTheLine() {
     glPushMatrix();
     glTranslated(1.f, 2.3f, LINK_HEIGHT);
     arm2.draw1();
+    glTranslated(0.f, 3.6f, 0.2f);
+    arm3.draw2();
     glPopMatrix();
 
     drawFloor();
