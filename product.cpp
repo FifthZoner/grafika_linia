@@ -16,7 +16,9 @@ void drawFloor() {
     glNormal3d(1, 0, 0);
     glColor3d(0.5f, 0.5f, 0.5f);
 
-    for (int x = -2; x < 7; x++) {
+
+
+    for (int x = -4; x < 6; x++) {
         for (int y = -2; y < 21; y++) {
             glTexCoord2f(0.f, 0.f);
             glVertex3d(float(x) * 0.5f, float(y) * 0.5f, LINK_HEIGHT * 3.f);

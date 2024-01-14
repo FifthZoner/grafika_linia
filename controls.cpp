@@ -28,10 +28,10 @@ void HandleKeyPress(unsigned char key, int x, int y) {
             positionY -= std::sin(rotationY * 0.017452778f) * 0.5f;
             break;
         case 'c':
-            positionZ -= 0.1f;
+            positionZ -= 0.5f;
             break;
         case 'f':
-            positionZ += 0.1f;
+            positionZ += 0.5f;
             break;
     }
 }

@@ -209,6 +209,7 @@ void Arm::draw2() {
                 drawCubeBrushed();
                 break;
             case State::cooled:
+                glRotated(90, 1, 0, 0);
                 drawCubeCooled();
                 break;
         }

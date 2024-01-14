@@ -73,6 +73,11 @@ void drawTheLine() {
     arm3.draw2();
     glPopMatrix();
 
+    glPushMatrix();
+    glTranslated(-0.86f, 8.15f, LINK_HEIGHT + 0.2f);
+    arm4.draw2();
+    glPopMatrix();
+
     drawFloor();
 
     // boxes

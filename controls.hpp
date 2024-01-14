@@ -5,8 +5,8 @@ inline float rotationX = 90;
 inline float rotationY = 0;
 inline float rotationZ = 0;
 inline float positionX = 0;
-inline float positionY = 0;
-inline float positionZ = 0;
+inline float positionY = -100;
+inline float positionZ = 10;
 
 #define RES_X 2560
 #define RES_Y 1400

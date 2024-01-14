@@ -25,6 +25,7 @@ void ChangeFloat(float& num, float value) {
 }
 
 unsigned int timer = 0;
+float fallSpeed = 0.f;
 
 // only moved things around, does not display anything
 void Animate() {
@@ -151,6 +152,58 @@ void Animate() {
         }
 
 
+    }
+
+    // the cold brushed cube being transferred the final pile where it mysteriously disappears
+    if (timer <= 90) {
+        positions[10] = Vector3f(0.09, 5.9 + (time + 270) * 0.005, -0.1);
+        arm4.hasCube = true;
+        arm4.cubeState = 3;
+
+        if (timer >= 30) {
+            arm4.rotationZ = -90 + (timer - 30) * 1.5;
+        }
+        if (timer <= 45) {
+            arm4.rotationX1 = time;
+        }
+        else {
+            arm4.rotationX1 = 90 - time;
+        }
+
+        // throwing away
+        display[15] = false;
+        if (timer > 83) {
+            positions[16] = Vector3f(-0.86 - (time - 83) * 0.05, 7.2, 0.0);
+        }
+        else {
+            positions[16] = Vector3f(-0.86, 7.2, 0.0);
+            fallSpeed = 0;
+        }
+
+
+    }
+    else {
+        positions[10] = Vector3f(0.09, 5.9 + (time + 270) * 0.005, -0.1);
+        arm4.hasCube = false;
+
+        if (timer <= 150) {
+            arm4.rotationZ = 0 - (time - 90) * 1.5;
+        }
+        if (timer <= 135) {
+            arm4.rotationX1 = time - 90;
+        }
+        else {
+            arm4.rotationX1 = 180 - time;
+        }
+
+        // throwing away
+        display[15] = true;
+        if (timer <= 100) {
+            positions[15] = Vector3f(-0.86, 7.2, -0.1 + (time - 90) * 0.01);
+        }
+        positions[16] = Vector3f(-0.86 - (time - 83) * 0.05, 7.2, positions[16].z);
+        fallSpeed += 0.001;
+        positions[16].z += fallSpeed;
     }
 
 }
