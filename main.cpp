@@ -42,21 +42,21 @@ void drawTheLine() {
     glPopMatrix();
 
     glPushMatrix();
-    glTranslated(2.f, 0, 0);
+    glTranslated(1.91f, 1.6f, 0);
     conveyor2.draw();
     glPopMatrix();
 
     glPushMatrix();
-    glTranslated(0.f, 4.f, 0);
+    glTranslated(0.f, 5.f, 0);
     conveyor3.draw();
     glPopMatrix();
 
     glPushMatrix();
     glTranslated(0.09f, 1.2f, 0.f);
     drawDevice();
-    glTranslated(1.91f, 2.f, 0.f);
+    glTranslated(1.82f, 1.91f, 0.f);
     drawDevice();
-    glTranslated(-2.f, 2.4f, 0.f);
+    glTranslated(-1.91f, 3.6f, 0.f);
     glScaled(1, 2.f, 1);
     drawDevice();
     glPopMatrix();
@@ -64,6 +64,11 @@ void drawTheLine() {
     glPushMatrix();
     glTranslated(1.f, 0.75f, LINK_HEIGHT);
     arm1.draw1();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(1.f, 2.3f, LINK_HEIGHT);
+    arm2.draw1();
     glPopMatrix();
 
     drawFloor();

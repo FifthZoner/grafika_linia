@@ -76,13 +76,50 @@ void Animate() {
     // the heated to second conveyor transfer
     if (timer <= 90) {
         arm2.cubeState = 1;
+        arm2.hasCube = false;
         display[6] = true;
+        display[7] = true;
         positions[6] = Vector3f(0.09, 1.4 + ((time) * 0.01), -0.1);
+
+        // arm comes back to grab the heated cube
+        arm2.rotationZ = 90;
+        // -85 to 85
+        arm2.rotationX1 = -85 + (time * (170.f / 90.f));
+        // 50 to -50
+        arm2.rotationX2 = 50 - (time * (100.f / 90.f));
+        // -55 to 55
+        arm2.rotationX3 = -55 + (time * (110.f / 90.f));
+
+        if (timer < 55) {
+            positions[7] = Vector3f(1.91, 2.3 + time * 0.02, -0.1);
+        }
 
     }
     else {
         display[6] = false;
+        display[7] = false;
+        arm2.hasCube = true;
+        // 85 to -85
+        arm2.rotationX1 = 85 - ((time - 90.f) * (170.f / 90.f));
+        // -50 to 50
+        arm2.rotationX2 = -50 + ((time - 90.f) * (100.f / 90.f));
+        // 55 to -55
+        arm2.rotationX3 = 55 - ((time - 90.f) * (110.f / 90.f));
 
+    }
+
+    // the hot brushed cube being transferred to cooling machine
+    if (timer <= 90) {
+        if (timer > 55) {
+            positions[8] = Vector3f(1.91, 2.3 + time * 0.02, -0.1);
+        }
+        else {
+            positions[8] = Vector3f(1.91, 3.6, -0.1);
+        }
+    }
+    else {
+
+        positions[8] = Vector3f(1.91, 2.3 + time * 0.02, -0.1);
     }
 
 }

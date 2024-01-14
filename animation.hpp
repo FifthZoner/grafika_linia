@@ -17,17 +17,19 @@ struct Vector3f {
 
 void Animate();
 
-inline std::array <Vector3f, 7> positions {
+inline std::array <Vector3f, 9> positions {
     Vector3f(0.85, -0.4 + 0.3, 0.2),
     Vector3f(1.1, -0.4 + 0.3, 0.2),
     Vector3f(0.85, -0.65 + 0.3, 0.2),
     Vector3f(1.1, -0.65 + 0.3, 0.2),
     Vector3f(0.975, -0.525 + 0.3, 0),
     Vector3f(0.09, 0.75, -0.1),
-    Vector3f(0.09, 1.5, -0.1)
+    Vector3f(0.09, 1.5, -0.1),
+    Vector3f(1.91, 2.3, -0.1),
+    Vector3f(1.91, 3.6, -0.1)
 
 };
-inline std::array <uint8_t, 7> states {0, 0, 0, 0, 0, 0, 1};
-inline std::array <bool, 7> display {1, 1, 1, 1, 1, 1, 1};
+inline std::array <uint8_t, 9> states {0, 0, 0, 0, 0, 0, 1, 1, 2};
+inline std::array <bool, 9> display {1, 1, 1, 1, 1, 1, 1, 1, 1};
 
 #endif //GRAFIKA_LINIA_ANIMATION_HPP
